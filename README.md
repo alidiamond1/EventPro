@@ -2,7 +2,10 @@
 
 A modern, feature-rich event planning platform built with React, Vite, and Tailwind CSS. EventPro helps you organize events seamlessly with an intuitive interface and powerful features.
 
-![EventPro Screenshot](screenshot.png)
+![EventPro Screenshot](Homepage.jpeg)
+![EventPro Screenshot](Register.jpeg)
+![EventPro Screenshot](Login.jpeg)
+
 
 ## ✨ Features
 
