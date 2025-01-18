@@ -2,10 +2,6 @@
 
 A modern, feature-rich event planning platform built with React, Vite, and Tailwind CSS. EventPro helps you organize events seamlessly with an intuitive interface and powerful features.
 
-![EventPro Screenshot](Homepage.jpeg)
-![EventPro Screenshot](Register.jpeg)
-![EventPro Screenshot](Login.jpeg)
-
 
 ## ✨ Features
 
@@ -73,8 +69,8 @@ A modern, feature-rich event planning platform built with React, Vite, and Tailw
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/event-planning-platform.git
-cd event-planning-platform
+git clone https://github.com/alidiamond1/EventPro.git
+cd EventPro
 ```
 
 2. Install dependencies
@@ -216,4 +212,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with ❤️ by [Your Name]
+![EventPro Screenshot](Homepage.jpeg)
+![EventPro Screenshot](Register.jpeg)
+![EventPro Screenshot](Login.jpeg)
+
+Made with ❤️ by Ali Diamond
