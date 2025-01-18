@@ -1,0 +1,46 @@
+"Build a full-featured Event Planning Platform using Vite, React, Tailwind CSS, and localStorage for data persistence. The platform will simplify event planning for users organizing parties, weddings, or corporate events. It should include the following key features and functionalities:
+
+1. Venue and Vendor Suggestions
+Create a user-friendly form where users can input details such as:
+Event Type (e.g., wedding, party, corporate event).
+Budget (e.g., total event budget or per-person cost).
+Location Preferences (e.g., city or region).
+Guest Count (to match venues or vendors with capacity limits).
+Use mock data (e.g., a JSON file or hardcoded array) to display venue and vendor suggestions dynamically based on user inputs.
+Allow users to filter the suggestions (e.g., by price range, proximity, or ratings).
+Save user preferences and selected venues/vendors to localStorage, so they are retained when the user revisits the application.
+2. Customizable Event Itineraries
+Provide a feature where users can create a detailed event itinerary, including:
+Time Slots (e.g., 9:00 AM - Breakfast, 12:00 PM - Ceremony).
+Activities (e.g., speeches, meal service, entertainment).
+Assigned Locations for each activity (e.g., ballroom, garden).
+Allow users to:
+Add, edit, and delete activities.
+Drag and drop activities to reorder them.
+Save the itinerary to localStorage and load it automatically on subsequent visits.
+Display the itinerary in a clear and responsive format, with a focus on usability for both desktop and mobile users.
+3. Guest List Manager
+Implement a guest management feature, including:
+A form for adding guest details (e.g., name, email, RSVP status, meal preference).
+The ability to edit or delete guests from the list.
+A dynamically updated table or list view showing all guests.
+Incorporate AI-like logic for seating arrangements, such as:
+Grouping guests by preferences (e.g., family, coworkers, friends).
+Automatically suggesting seat assignments for tables (mock AI logic or rule-based).
+Use localStorage to persist the guest list and seating arrangements.
+4. AI Chatbot for Theme Ideas
+Create a chatbot interface using React components to simulate AI-driven suggestions for event themes. The chatbot should:
+Accept user input, like "I want a luxury wedding" or "I’m planning a corporate dinner."
+Provide theme ideas based on the input (e.g., color schemes, decoration styles, dress codes).
+Use a rule-based logic or conditional statements to generate responses (no external AI APIs required).
+Ensure the chatbot has a visually appealing design and works seamlessly on mobile and desktop devices.
+5. Responsive Design
+Use Tailwind CSS to create a modern, responsive UI that adapts to various screen sizes.
+Include a clean navigation bar and layout that lets users easily access all features (e.g., Venue Suggestions, Itinerary, Guest List, Chatbot).
+6. LocalStorage Integration
+Ensure all user data (e.g., selected venues, itineraries, and guest lists) is saved to localStorage and loaded automatically when the user revisits the application.
+Provide a "Reset" button to clear all saved data from localStorage if the user wants to start fresh.
+7. Additional Features (Optional)
+Add a Dark Mode Toggle to enhance user experience.
+Create Event Summary Reports that compile all event details (venue, itinerary, guest list) into a single, printable view.
+Focus on creating a seamless, user-friendly experience with a visually appealing and responsive design. Avoid using external libraries for state management or AI logic; use React’s state management and basic JavaScript for the AI features. Tailwind CSS should handle all styling, and all user data should persist using localStorage
