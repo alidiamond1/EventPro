@@ -31,12 +31,12 @@ const ActivityForm = ({ activity, onSave, onCancel }) => {
           <select
             value={formData.time}
             onChange={(e) => setFormData(prev => ({ ...prev, time: e.target.value }))}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
             required
           >
             <option value="">Select Time</option>
             {timeSlots.map(slot => (
-              <option key={slot.id} value={slot.time}>{slot.label}</option>
+              <option key={slot.id} value={slot.time} className="bg-white dark:bg-gray-700 text-gray-900 dark:text-white">{slot.label}</option>
             ))}
           </select>
         </div>
@@ -48,12 +48,12 @@ const ActivityForm = ({ activity, onSave, onCancel }) => {
           <select
             value={formData.type}
             onChange={(e) => setFormData(prev => ({ ...prev, type: e.target.value }))}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
             required
           >
             <option value="">Select Type</option>
             {activityTypes.map(type => (
-              <option key={type.id} value={type.id}>
+              <option key={type.id} value={type.id} className="bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
                 {type.icon} {type.label}
               </option>
             ))}
@@ -68,7 +68,7 @@ const ActivityForm = ({ activity, onSave, onCancel }) => {
             type="text"
             value={formData.title}
             onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
             required
           />
         </div>
@@ -80,12 +80,12 @@ const ActivityForm = ({ activity, onSave, onCancel }) => {
           <select
             value={formData.location}
             onChange={(e) => setFormData(prev => ({ ...prev, location: e.target.value }))}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
             required
           >
             <option value="">Select Location</option>
             {locationTypes.map(location => (
-              <option key={location.id} value={location.id}>{location.label}</option>
+              <option key={location.id} value={location.id} className="bg-white dark:bg-gray-700 text-gray-900 dark:text-white">{location.label}</option>
             ))}
           </select>
         </div>
@@ -100,7 +100,7 @@ const ActivityForm = ({ activity, onSave, onCancel }) => {
             onChange={(e) => setFormData(prev => ({ ...prev, duration: parseInt(e.target.value) }))}
             min="15"
             step="15"
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
             required
           />
         </div>
@@ -112,7 +112,7 @@ const ActivityForm = ({ activity, onSave, onCancel }) => {
           <textarea
             value={formData.notes}
             onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
             rows="3"
           />
         </div>
@@ -122,13 +122,13 @@ const ActivityForm = ({ activity, onSave, onCancel }) => {
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+          className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
         >
           Cancel
         </button>
         <button
           type="submit"
-          className="btn btn-primary"
+          className="px-4 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
         >
           Save Activity
         </button>
@@ -147,7 +147,7 @@ const ActivityCard = ({ activity, onEdit, onDelete }) => {
         <div className="flex items-center space-x-2">
           <span className="text-2xl">{activityType?.icon}</span>
           <div>
-            <h3 className="font-semibold">{activity.title}</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white">{activity.title}</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               {activity.time} ({activity.duration} mins)
             </p>
@@ -156,13 +156,13 @@ const ActivityCard = ({ activity, onEdit, onDelete }) => {
         <div className="flex space-x-2">
           <button
             onClick={() => onEdit(activity)}
-            className="text-blue-600 hover:text-blue-700"
+            className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
           >
             ✏️
           </button>
           <button
             onClick={() => onDelete(activity.id)}
-            className="text-red-600 hover:text-red-700"
+            className="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors duration-200"
           >
             🗑️
           </button>
@@ -239,10 +239,10 @@ const EventPlanner = () => {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold">Event Timeline</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Event Timeline</h2>
         <button
           onClick={() => setShowForm(true)}
-          className="btn btn-primary"
+          className="px-4 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
         >
           Add Activity
         </button>

@@ -1,22 +1,21 @@
 import { useState } from 'react';
 import EventPlanner from '../../components/planner/EventPlanner';
+import EventDetails from '../../components/planner/EventDetails';
 
 const EventPlannerPage = () => {
   const [eventDetails, setEventDetails] = useState(() => {
     const saved = localStorage.getItem('eventDetails');
     return saved ? JSON.parse(saved) : {
-      name: '',
-      date: '',
-      type: '',
+      eventName: '',
+      eventDate: '',
+      eventType: '',
       expectedGuests: ''
     };
   });
 
-  const handleDetailsChange = (e) => {
-    const { name, value } = e.target;
-    const updatedDetails = { ...eventDetails, [name]: value };
-    setEventDetails(updatedDetails);
-    localStorage.setItem('eventDetails', JSON.stringify(updatedDetails));
+  const handleDetailsChange = (newDetails) => {
+    setEventDetails(newDetails);
+    localStorage.setItem('eventDetails', JSON.stringify(newDetails));
   };
 
   return (
@@ -30,70 +29,12 @@ const EventPlannerPage = () => {
         </p>
       </div>
 
-      {/* Event Details Form */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
-        <h2 className="text-xl font-semibold mb-4">Event Details</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Event Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              value={eventDetails.name}
-              onChange={handleDetailsChange}
-              placeholder="Enter event name"
-              className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Event Date
-            </label>
-            <input
-              type="date"
-              name="date"
-              value={eventDetails.date}
-              onChange={handleDetailsChange}
-              className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Event Type
-            </label>
-            <select
-              name="type"
-              value={eventDetails.type}
-              onChange={handleDetailsChange}
-              className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-            >
-              <option value="">Select Type</option>
-              <option value="wedding">Wedding</option>
-              <option value="corporate">Corporate Event</option>
-              <option value="birthday">Birthday Party</option>
-              <option value="conference">Conference</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Expected Guests
-            </label>
-            <input
-              type="number"
-              name="expectedGuests"
-              value={eventDetails.expectedGuests}
-              onChange={handleDetailsChange}
-              placeholder="Number of guests"
-              className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-            />
-          </div>
-        </div>
+      {/* Event Details Section */}
+      <div className="mb-8">
+        <EventDetails 
+          initialDetails={eventDetails}
+          onSave={handleDetailsChange}
+        />
       </div>
 
       {/* Quick Stats */}
@@ -101,13 +42,15 @@ const EventPlannerPage = () => {
         {[
           {
             label: 'Days Until Event',
-            value: eventDetails.date
-              ? Math.max(0, Math.ceil((new Date(eventDetails.date) - new Date()) / (1000 * 60 * 60 * 24)))
-              : '-'
+            value: eventDetails.eventDate
+              ? Math.max(0, Math.ceil((new Date(eventDetails.eventDate) - new Date()) / (1000 * 60 * 60 * 24)))
+              : '-',
+            icon: '📅'
           },
           {
             label: 'Expected Guests',
-            value: eventDetails.expectedGuests || '-'
+            value: eventDetails.expectedGuests || '-',
+            icon: '👥'
           },
           {
             label: 'Planned Activities',
@@ -118,14 +61,16 @@ const EventPlannerPage = () => {
               } catch {
                 return 0;
               }
-            })()
+            })(),
+            icon: '📋'
           }
         ].map((stat, index) => (
           <div
             key={index}
-            className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center"
+            className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center transition-colors duration-200"
           >
-            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+            <div className="text-3xl mb-2">{stat.icon}</div>
+            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">
               {stat.value}
             </div>
             <div className="text-gray-600 dark:text-gray-300">{stat.label}</div>
@@ -134,7 +79,7 @@ const EventPlannerPage = () => {
       </div>
 
       {/* Timeline Section */}
-      <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6">
+      <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6 transition-colors duration-200">
         <EventPlanner />
       </div>
 
@@ -142,7 +87,7 @@ const EventPlannerPage = () => {
       <div className="mt-8 flex justify-end space-x-4">
         <button
           onClick={() => window.print()}
-          className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+          className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
         >
           Print Timeline
         </button>
@@ -156,13 +101,13 @@ const EventPlannerPage = () => {
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `${eventDetails.name || 'event'}-timeline.json`;
+            a.download = `${eventDetails.eventName || 'event'}-timeline.json`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
           }}
-          className="btn btn-primary"
+          className="px-4 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
         >
           Export Timeline
         </button>

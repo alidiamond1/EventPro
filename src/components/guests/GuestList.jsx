@@ -130,10 +130,10 @@ const GuestForm = ({ guest, onSave, onCancel }) => {
           <select
             value={formData.status}
             onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value }))}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
           >
             {guestStatusOptions.map(status => (
-              <option key={status.id} value={status.id}>{status.label}</option>
+              <option key={status.id} value={status.id} className="bg-white dark:bg-gray-700 text-gray-900 dark:text-white">{status.label}</option>
             ))}
           </select>
         </div>
@@ -145,11 +145,11 @@ const GuestForm = ({ guest, onSave, onCancel }) => {
           <select
             value={formData.group}
             onChange={(e) => setFormData(prev => ({ ...prev, group: e.target.value }))}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
           >
             <option value="">Select Group</option>
             {guestGroups.map(group => (
-              <option key={group.id} value={group.id}>{group.label}</option>
+              <option key={group.id} value={group.id} className="bg-white dark:bg-gray-700 text-gray-900 dark:text-white">{group.label}</option>
             ))}
           </select>
         </div>
@@ -161,10 +161,10 @@ const GuestForm = ({ guest, onSave, onCancel }) => {
           <select
             value={formData.mealPreference}
             onChange={(e) => setFormData(prev => ({ ...prev, mealPreference: e.target.value }))}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
           >
             {mealPreferences.map(pref => (
-              <option key={pref.id} value={pref.id}>{pref.label}</option>
+              <option key={pref.id} value={pref.id} className="bg-white dark:bg-gray-700 text-gray-900 dark:text-white">{pref.label}</option>
             ))}
           </select>
         </div>
@@ -179,11 +179,11 @@ const GuestForm = ({ guest, onSave, onCancel }) => {
               ...prev,
               tableAssignment: e.target.value ? Number(e.target.value) : null
             }))}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
           >
             <option value="">Unassigned</option>
             {tableAssignments.map(table => (
-              <option key={table.id} value={table.id}>{table.name}</option>
+              <option key={table.id} value={table.id} className="bg-white dark:bg-gray-700 text-gray-900 dark:text-white">{table.name}</option>
             ))}
           </select>
         </div>
@@ -194,7 +194,7 @@ const GuestForm = ({ guest, onSave, onCancel }) => {
             id="plusOne"
             checked={formData.plusOne}
             onChange={(e) => setFormData(prev => ({ ...prev, plusOne: e.target.checked }))}
-            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:border-gray-600 rounded transition-colors duration-200"
           />
           <label htmlFor="plusOne" className="ml-2 block text-sm text-gray-700 dark:text-gray-300">
             Plus One
@@ -209,7 +209,7 @@ const GuestForm = ({ guest, onSave, onCancel }) => {
             value={formData.notes}
             onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
             rows="3"
-            className="w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
           />
         </div>
       </div>
@@ -218,13 +218,13 @@ const GuestForm = ({ guest, onSave, onCancel }) => {
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+          className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
         >
           Cancel
         </button>
         <button
           type="submit"
-          className="btn btn-primary"
+          className="px-4 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
         >
           {guest ? 'Update Guest' : 'Add Guest'}
         </button>
@@ -316,7 +316,7 @@ const GuestList = () => {
         <h2 className="text-2xl font-bold">Guest List</h2>
         <button
           onClick={() => setShowForm(true)}
-          className="btn btn-primary"
+          className="px-4 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
         >
           Add Guest
         </button>
@@ -330,7 +330,7 @@ const GuestList = () => {
             placeholder="Search guests..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-colors duration-200"
           />
         </div>
 
@@ -338,11 +338,11 @@ const GuestList = () => {
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
           >
             <option value="">All Statuses</option>
             {guestStatusOptions.map(status => (
-              <option key={status.id} value={status.id}>{status.label}</option>
+              <option key={status.id} value={status.id} className="bg-white dark:bg-gray-700 text-gray-900 dark:text-white">{status.label}</option>
             ))}
           </select>
         </div>
@@ -351,11 +351,11 @@ const GuestList = () => {
           <select
             value={filterGroup}
             onChange={(e) => setFilterGroup(e.target.value)}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
           >
             <option value="">All Groups</option>
             {guestGroups.map(group => (
-              <option key={group.id} value={group.id}>{group.label}</option>
+              <option key={group.id} value={group.id} className="bg-white dark:bg-gray-700 text-gray-900 dark:text-white">{group.label}</option>
             ))}
           </select>
         </div>

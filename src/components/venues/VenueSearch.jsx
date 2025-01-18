@@ -37,11 +37,11 @@ const SearchForm = ({ onSearch }) => {
             name="eventType"
             value={formData.eventType}
             onChange={handleChange}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
           >
             <option value="">Select Type</option>
             {eventTypes.map(type => (
-              <option key={type.id} value={type.id}>{type.label}</option>
+              <option key={type.id} value={type.id} className="bg-white dark:bg-gray-700 text-gray-900 dark:text-white">{type.label}</option>
             ))}
           </select>
         </div>
@@ -56,7 +56,7 @@ const SearchForm = ({ onSearch }) => {
             value={formData.guestCount}
             onChange={handleChange}
             placeholder="Number of guests"
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-colors duration-200"
           />
         </div>
 
@@ -68,11 +68,11 @@ const SearchForm = ({ onSearch }) => {
             name="budget"
             value={formData.budget}
             onChange={handleChange}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors duration-200"
           >
             <option value="">Select Budget</option>
             {priceRanges.map(range => (
-              <option key={range.id} value={range.id}>
+              <option key={range.id} value={range.id} className="bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
                 {range.label} (Up to ${range.maxPrice})
               </option>
             ))}
@@ -89,7 +89,7 @@ const SearchForm = ({ onSearch }) => {
             value={formData.location}
             onChange={handleChange}
             placeholder="Enter location"
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 transition-colors duration-200"
           />
         </div>
       </div>
@@ -97,7 +97,7 @@ const SearchForm = ({ onSearch }) => {
       <div className="flex justify-end">
         <button
           type="submit"
-          className="btn btn-primary"
+          className="px-4 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
         >
           Search Venues
         </button>
@@ -116,7 +116,7 @@ const VenueCard = ({ venue }) => (
     </div>
     <div className="p-4">
       <div className="flex justify-between items-start mb-2">
-        <h3 className="text-lg font-semibold">{venue.name}</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{venue.name}</h3>
         <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
           {venue.priceRange}
         </span>
@@ -133,7 +133,7 @@ const VenueCard = ({ venue }) => (
         </div>
       </div>
       <div className="mt-4">
-        <button className="w-full btn btn-primary">
+        <button className="w-full px-4 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
           View Details
         </button>
       </div>
@@ -163,7 +163,7 @@ const VenueSearch = () => {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold mb-4">Find Your Perfect Venue</h2>
+      <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Find Your Perfect Venue</h2>
       <SearchForm onSearch={handleSearch} />
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
